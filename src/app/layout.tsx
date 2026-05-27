@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Turkish-crafted formal wear for the Zambian professional. Two stores in Lusaka.",
     url: "https://suit-up-zm.vercel.app",
     siteName: "Suit Up Zambia",
-    images: [{ url: "/logo.jpg", width: 200, height: 90, alt: "Suit Up Zambia" }],
+    images: [{ url: "https://suit-up-zm.vercel.app/logo.jpg", width: 200, height: 90, alt: "Suit Up Zambia" }],
     locale: "en_ZM",
     type: "website",
   },
