@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import ImagePlaceholder from "@/components/storefront/ImagePlaceholder";
 import { IconArrow } from "@/components/ui/Icons";
-import { fmt } from "@/lib/data";
+import { CATALOG, fmt } from "@/lib/data";
 
 type PayMethod = "card" | "mobile";
 type Network = "airtel" | "mtn";
@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   const [payMethod, setPayMethod] = useState<PayMethod>("card");
   const [network, setNetwork] = useState<Network>("airtel");
 
-  const subtotal = lines.reduce((s, l) => s + l.product.price * l.qty, 0);
+  const subtotal = lines.reduce((s, l) => s + l.price * l.qty, 0);
   const total = subtotal;
 
   return (
@@ -42,21 +42,22 @@ export default function CheckoutPage() {
             </p>
           ) : (
             <>
-              {lines.map((l) => (
-                <div key={l.id} className="su-co-item">
-                  <div className="su-co-item-img">
-                    <ImagePlaceholder product={l.product} ratio={1} imageIndex={0} />
-                  </div>
-                  <div className="su-co-item-info">
-                    <div className="su-co-item-name">{l.product.name}</div>
-                    <div className="su-co-item-sub">{l.product.subtitle}</div>
-                    <div className="su-co-item-meta">
-                      Size {l.size} · Qty {l.qty}
+              {lines.map((l) => {
+                const product = CATALOG.find((p) => p.id === l.productId);
+                return (
+                  <div key={l.id} className="su-co-item">
+                    <div className="su-co-item-img">
+                      <ImagePlaceholder product={product} ratio={1} imageIndex={0} />
                     </div>
+                    <div className="su-co-item-info">
+                      <div className="su-co-item-name">{product?.name ?? l.productId}</div>
+                      <div className="su-co-item-sub">{product?.subtitle}</div>
+                      <div className="su-co-item-meta">Size {l.size} · Qty {l.qty}</div>
+                    </div>
+                    <div className="su-co-item-price">{fmt(l.price * l.qty)}</div>
                   </div>
-                  <div className="su-co-item-price">{fmt(l.product.price * l.qty)}</div>
-                </div>
-              ))}
+                );
+              })}
 
               <div className="su-co-sum-rows">
                 <div className="su-co-sum-row">
