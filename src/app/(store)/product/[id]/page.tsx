@@ -15,6 +15,7 @@ export default function ProductPage() {
   const product = CATALOG.find((p) => p.id === id);
 
   const { addToCart } = useCart();
+  const [activeImg, setActiveImg] = useState(0);
   const [size, setSize] = useState<string | null>(null);
   const [open, setOpen] = useState({ details: true, fit: false, ship: false });
   const [justAdded, setJustAdded] = useState(false);
@@ -25,7 +26,7 @@ export default function ProductPage() {
         <div style={{ padding: "8rem 2rem", textAlign: "center" }}>
           <div className="su-h2">Product not found.</div>
           <Link href="/collection/all" className="su-link" style={{ textDecoration: "none" }}>
-            Browse the atelier <IconArrow />
+            Browse all suits <IconArrow />
           </Link>
         </div>
       </main>
@@ -61,11 +62,18 @@ export default function ProductPage() {
       <div className="su-pdp-grid">
         {/* Gallery */}
         <div className="su-pdp-gallery">
-          <ImagePlaceholder product={product} ratio={5 / 4} imageIndex={0} label={`${product.color} · view 01`} />
+          <ImagePlaceholder product={product} ratio={5 / 4} imageIndex={activeImg} priority={activeImg === 0} label={`${product.color} · view ${String(activeImg + 1).padStart(2, "0")}`} />
           <div className="su-pdp-thumbs">
-            <ImagePlaceholder product={product} ratio={1} imageIndex={1} label="02" />
-            <ImagePlaceholder product={product} ratio={1} imageIndex={2} label="03" />
-            <ImagePlaceholder product={product} ratio={1} imageIndex={3} label="detail" />
+            {[1, 2, 3, 4].map((idx) => (
+              <button
+                key={idx}
+                className={"su-pdp-thumb" + (activeImg === idx ? " is-active" : "")}
+                onClick={() => setActiveImg(idx)}
+                aria-label={`View image ${idx + 1}`}
+              >
+                <ImagePlaceholder product={product} ratio={1} imageIndex={idx} />
+              </button>
+            ))}
           </div>
         </div>
 
@@ -113,28 +121,27 @@ export default function ProductPage() {
                 <>Add to bag — {fmt(product.price)} <IconArrow /></>
               )}
             </button>
-            <button className="su-btn su-btn--ghost">Book a fitting instead</button>
+            <button className="su-btn su-btn--ghost">Visit us in store</button>
           </div>
 
           {/* Trust */}
           <div className="su-pdp-trust">
-            <div><span className="su-trust-h">Complimentary</span><span>nationwide shipping</span></div>
-            <div><span className="su-trust-h">Altered for life</span><span>in our workshops</span></div>
-            <div><span className="su-trust-h">Ships in</span><span>5—7 days</span></div>
+            <div><span className="su-trust-h">Nationwide</span><span>delivery available</span></div>
+            <div><span className="su-trust-h">In-store</span><span>try before you buy</span></div>
+            <div><span className="su-trust-h">Both stores</span><span>open 6 days/week</span></div>
           </div>
 
           {/* Accordions */}
           {([
             {
               key: "details" as const,
-              label: "The cloth & make",
+              label: "Details & fabric",
               body: (
                 <dl className="su-spec">
                   <dt>Fabric</dt><dd>{product.fabric}</dd>
                   <dt>Colour</dt><dd>{product.color}</dd>
-                  <dt>Make</dt><dd>{product.origin}</dd>
-                  <dt>Lining</dt><dd>Bemberg cupro, full body</dd>
-                  <dt>Construction</dt><dd>Half-canvas, hand-finished</dd>
+                  <dt>Origin</dt><dd>{product.origin}</dd>
+                  <dt>Includes</dt><dd>{product.fit}</dd>
                 </dl>
               ),
             },
@@ -143,23 +150,24 @@ export default function ProductPage() {
               label: "Fit & sizing",
               body: (
                 <>
-                  <p>{product.fit}. Our modern fit is cut for a clean shoulder with mild
-                    waist suppression. Trousers sit at the natural waist with a 7&Prime; leg opening.</p>
+                  <p>Turkish slim fit — a clean shoulder line with a tailored chest and a slim
+                    leg. European sizing: measure your chest in cm and select the nearest size.</p>
                   <p className="su-fine">
-                    If you&apos;re between sizes, we recommend sizing up and bringing it to your
-                    nearest workshop for a complimentary alteration.
+                    Not sure of your size? Visit either of our Lusaka stores and our staff
+                    will help you find the right fit before you buy.
                   </p>
                 </>
               ),
             },
             {
               key: "ship" as const,
-              label: "Shipping & returns",
+              label: "Delivery & returns",
               body: (
                 <>
-                  <p>Complimentary nationwide delivery. Ready-to-wear orders dispatched within
-                    five to seven working days from our Lusaka workshop.</p>
-                  <p>Returns are accepted within 30 days, in original condition.</p>
+                  <p>Available for collection same-day from our Arcades Mall or Mosi oa
+                    Tunya Mall stores. Nationwide delivery also available — contact us on
+                    +260 773 960 536 or sales@suitupzambia.com to arrange.</p>
+                  <p>Returns accepted within 14 days in original, unworn condition.</p>
                 </>
               ),
             },

@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function ProductCard({ product, cardStyle = "minimal", priority = false }: Props) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(false); // used by minimal card
   const router = useRouter();
 
   const go = () => router.push(`/product/${product.id}`);
@@ -52,8 +52,6 @@ export default function ProductCard({ product, cardStyle = "minimal", priority =
       <article
         className="su-card su-card--overlay"
         onClick={go}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
         style={{ cursor: "pointer" }}
       >
         <div className="su-card-frame">
@@ -67,8 +65,11 @@ export default function ProductCard({ product, cardStyle = "minimal", priority =
           </div>
         </div>
         <div className="su-card-strip">
-          <span>{product.color}</span>
-          <span>{fmt(product.price)}</span>
+          <div className="su-card-strip-main">
+            <span className="su-card-strip-name">{product.name}</span>
+            <span className="su-card-strip-price">{fmt(product.price)}</span>
+          </div>
+          <span className="su-card-strip-sub">{product.subtitle}</span>
         </div>
       </article>
     );

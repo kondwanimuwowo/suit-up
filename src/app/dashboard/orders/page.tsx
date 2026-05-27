@@ -67,10 +67,9 @@ function OrderDrawer({ order, onClose }: { order: Order; onClose: () => void }) 
         </div>
 
         <div className="su-drawer-sect">
-          <div className="su-eyebrow">Notes from the cutter</div>
+          <div className="su-eyebrow">Order notes</div>
           <p className="su-drawer-note">
-            Customer specified a slightly higher armhole and one extra inch of sleeve length.
-            Pattern on file (folio 14, drawer 3). Second fitting booked Tue 26 May, 10:00.
+            Customer confirmed size via in-store try-on. Ready for dispatch or in-store collection.
           </p>
         </div>
 
@@ -109,7 +108,7 @@ export default function OrdersPage() {
     <>
       <Topbar
         title="Orders"
-        breadcrumb={["Workshop", "Orders"]}
+        breadcrumb={["Store", "Orders"]}
         rightSlot={
           <>
             <button className="su-btn su-btn--ghost su-btn--sm">Export CSV</button>

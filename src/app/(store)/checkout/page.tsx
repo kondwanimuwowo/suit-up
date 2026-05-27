@@ -78,9 +78,9 @@ export default function CheckoutPage() {
           )}
 
           <div className="su-co-sum-trust">
-            <div>✓ Nationwide delivery included</div>
-            <div>✓ Free alterations for life</div>
-            <div>✓ 30-day returns accepted</div>
+            <div>✓ Nationwide delivery available</div>
+            <div>✓ In-store collection same-day</div>
+            <div>✓ 14-day returns accepted</div>
           </div>
         </aside>
 
@@ -222,8 +222,8 @@ export default function CheckoutPage() {
           </button>
 
           <p className="su-fine" style={{ marginTop: 10, textAlign: "center" }}>
-            Orders dispatched within 5–7 working days from our Lusaka workshop.
-            Free alterations for the life of the garment.
+            In-store collection available same-day from Arcades Mall or Mosi oa Tunya Mall.
+            For delivery queries call +260 773 960 536.
           </p>
         </div>
       </div>

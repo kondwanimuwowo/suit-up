@@ -8,11 +8,11 @@ import ProductCard from "@/components/storefront/ProductCard";
 import { IconArrow, IconClose } from "@/components/ui/Icons";
 
 const SUBTITLES: Record<string, string> = {
-  all:    "Every piece, this season.",
-  suits:  "Six pieces in mid- and full-weight wools.",
-  shirts: "Italian shirtings, cut for tailoring.",
-  ties:   "Hand-rolled in Como and Biella.",
-  shoes:  "Goodyear-welted in Northampton.",
+  all:    "Every piece, in stock now.",
+  suits:  "Turkish-crafted formal wear. Slim cuts, full range.",
+  shirts: "Clean dress shirts to complete the suit.",
+  ties:   "Ties, pocket squares and finishing pieces.",
+  shoes:  "Footwear to match.",
 };
 
 const MADE_IN = ["Lusaka, ZM", "Ndola, ZM", "Livingstone, ZM", "Northampton, UK", "Como, IT", "Biella, IT"];

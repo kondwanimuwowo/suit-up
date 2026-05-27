@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { IconBag, IconSearch, IconUser, IconClose, IconMenu } from "@/components/ui/Icons";
@@ -9,15 +10,13 @@ import { IconBag, IconSearch, IconUser, IconClose, IconMenu } from "@/components
 const SHOP_NAV = [
   { href: "/collection/suits",   label: "Suits" },
   { href: "/collection/shirts",  label: "Shirts" },
-  { href: "/collection/ties",    label: "Ties" },
-  { href: "/collection/shoes",   label: "Shoes" },
+  { href: "/collection/ties",    label: "Accessories" },
 ];
 
 const MORE_NAV = [
-  { href: "/", label: "Made to Measure" },
-  { href: "/", label: "Journal" },
-  { href: "/", label: "Workshops" },
-  { href: "/", label: "Contact" },
+  { href: "/", label: "Our Story" },
+  { href: "/", label: "Store Locations" },
+  { href: "/", label: "Contact Us" },
 ];
 
 export default function Header() {
@@ -51,7 +50,7 @@ export default function Header() {
       <header className={`su-header${scrolled ? " is-scrolled" : ""}`}>
         <div className="su-header-inner">
           <Link href="/" className="su-brand" style={{ textDecoration: "none" }}>
-            <span className="su-brand-name">SUIT UP</span>
+            <Image src="/suit-up-logo.png" alt="Suit Up" width={67} height={30} priority />
           </Link>
 
           <nav className="su-nav">
@@ -116,7 +115,7 @@ export default function Header() {
 
           {/* More */}
           <div className="su-mnav-group">
-            <div className="su-mnav-label">Atelier</div>
+            <div className="su-mnav-label">More</div>
             {MORE_NAV.map((n) => (
               <Link
                 key={n.label}
@@ -138,7 +137,7 @@ export default function Header() {
           >
             View bag{cartCount > 0 ? ` · ${cartCount}` : ""}
           </button>
-          <span className="su-mnav-place">Lusaka · Ndola · Livingstone</span>
+          <span className="su-mnav-place">Arcades Mall · Mosi oa Tunya Mall</span>
         </div>
       </div>
 

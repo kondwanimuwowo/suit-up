@@ -6,15 +6,13 @@ import { IconArrow } from "@/components/ui/Icons";
 
 export default function HomePage() {
   const featured = CATALOG.filter((p) => p.cat === "suits").slice(0, 4);
-  const editorial = CATALOG.find((p) => p.id === "s-glenmore")!;
-  const tie = CATALOG.find((p) => p.id === "t-silk-burgundy")!;
-  const shoe = CATALOG.find((p) => p.id === "sh-belmont")!;
+  const editorial = CATALOG.find((p) => p.id === "su-navy-contrast")!;
 
   const tiles = [
-    { product: CATALOG.find((p) => p.id === "s-westbrook")!, href: "/collection/suits", label: "Suits" },
-    { product: CATALOG.find((p) => p.id === "sh-oxford")!, href: "/collection/shirts", label: "Shirts" },
-    { product: CATALOG.find((p) => p.id === "t-silk-burgundy")!, href: "/collection/ties", label: "Ties" },
-    { product: CATALOG.find((p) => p.id === "sh-belmont")!, href: "/collection/shoes", label: "Shoes" },
+    { product: CATALOG.find((p) => p.id === "su-navy-contrast")!, href: "/collection/suits",  label: "Suits" },
+    { product: CATALOG.find((p) => p.id === "su-grey-classic")!,  href: "/collection/suits",  label: "Three-Piece" },
+    { product: CATALOG.find((p) => p.id === "su-ivory")!,         href: "/collection/suits",  label: "Wedding" },
+    { product: CATALOG.find((p) => p.id === "su-navy-db")!,       href: "/collection/suits",  label: "Double-Breasted" },
   ];
 
   return (
@@ -22,26 +20,27 @@ export default function HomePage() {
       {/* ── Hero — Split ──────────────────────────────────── */}
       <section className="su-hero su-hero--split">
         <div className="su-hero-split-left">
-          <div className="su-eyebrow">Autumn — Winter 26</div>
+          <div className="su-eyebrow">New arrivals — now in store</div>
           <h1 className="su-display">
-            A wardrobe<br />
-            built quietly,<br />
-            <em>worn for years.</em>
+            Dress the part.<br />
+            <em>Every time.</em>
           </h1>
           <p className="su-lede">
-            Half-canvas tailoring in English wools, Italian shirtings,
-            Northampton shoemaking. Made in small runs from our Lusaka workshop.
+            Turkish-crafted formal wear for the Zambian professional.
+            Sharp silhouettes, quality construction, Lusaka prices.
           </p>
           <div className="su-hero-cta">
             <Link href="/collection/suits" className="su-btn su-btn--ink" style={{ textDecoration: "none" }}>
-              Shop the season <IconArrow />
+              Shop suits <IconArrow />
             </Link>
-            <button className="su-btn su-btn--ghost">Book a fitting</button>
+            <Link href="/collection/all" className="su-btn su-btn--ghost" style={{ textDecoration: "none" }}>
+              View all
+            </Link>
           </div>
           <div className="su-hero-meta">
-            <div><span className="num">38</span><span>fittings this month</span></div>
-            <div><span className="num">6 wk</span><span>MTM lead time</span></div>
-            <div><span className="num">K0</span><span>alterations, for life</span></div>
+            <div><span className="num">11</span><span>suit styles in stock</span></div>
+            <div><span className="num">2</span><span>stores in Lusaka</span></div>
+            <div><span className="num">K5,999</span><span>suits from</span></div>
           </div>
         </div>
         <div className="su-hero-split-grid">
@@ -63,16 +62,16 @@ export default function HomePage() {
       <section className="su-section">
         <div className="su-section-hd">
           <div>
-            <div className="su-eyebrow">The Season</div>
-            <h2 className="su-h2">Six suits, considered.</h2>
+            <div className="su-eyebrow">In stock now</div>
+            <h2 className="su-h2">The current range.</h2>
           </div>
           <Link href="/collection/suits" className="su-link" style={{ textDecoration: "none" }}>
-            View all <IconArrow />
+            View all suits <IconArrow />
           </Link>
         </div>
         <div className="su-grid su-grid--4">
-          {featured.map((p) => (
-            <ProductCard key={p.id} product={p} cardStyle="overlay" />
+          {featured.map((p, i) => (
+            <ProductCard key={p.id} product={p} cardStyle="overlay" priority={i < 2} />
           ))}
         </div>
       </section>
@@ -83,20 +82,22 @@ export default function HomePage() {
           <ImagePlaceholder product={editorial} ratio={4 / 5} />
         </div>
         <div className="su-editorial-text">
-          <div className="su-eyebrow">Made to Measure</div>
+          <div className="su-eyebrow">Style. Service. Quality. Price.</div>
           <h2 className="su-h2 su-h2--alt">
-            Two fittings.<br />
-            One pattern, kept on file.<br />
-            <em>Six weeks to delivery.</em>
+            The right suit,<br />
+            ready when<br />
+            <em>you need it.</em>
           </h2>
           <p className="su-lede">
-            Our cutters take 26 measurements by hand from our Lusaka atelier, then keep
-            your pattern for any future commission. A first fitting in the canvas,
-            a second in the finished cloth.
+            Off-the-rack doesn&apos;t mean off-the-shelf. Every suit at Suit Up is selected
+            for cut, colour and construction — then available the same day, in store,
+            in Lusaka.
           </p>
           <div className="su-editorial-cta">
-            <button className="su-btn su-btn--ink">Book a fitting <IconArrow /></button>
-            <button className="su-link">Read about the process</button>
+            <Link href="/collection/suits" className="su-btn su-btn--ink" style={{ textDecoration: "none" }}>
+              Shop the range <IconArrow />
+            </Link>
+            <button className="su-link">Find our stores</button>
           </div>
         </div>
       </section>
@@ -106,45 +107,45 @@ export default function HomePage() {
         <div className="su-section-hd">
           <div>
             <div className="su-eyebrow">Accessories</div>
-            <h2 className="su-h2">The finishing.</h2>
+            <h2 className="su-h2">Finish the look.</h2>
           </div>
-          <Link href="/collection/all" className="su-link" style={{ textDecoration: "none" }}>
+          <Link href="/collection/ties" className="su-link" style={{ textDecoration: "none" }}>
             View all <IconArrow />
           </Link>
         </div>
         <div className="su-grid su-grid--3">
-          {[tie, shoe, CATALOG.find((p) => p.id === "sh-poplin")!].map((p) => (
+          {CATALOG.filter((p) => p.cat === "shirts" || p.cat === "ties").slice(0, 3).map((p) => (
             <ProductCard key={p.id} product={p} cardStyle="overlay" />
           ))}
         </div>
       </section>
 
-      {/* ── Notes / values ───────────────────────────────────── */}
+      {/* ── Why Suit Up ───────────────────────────────────────── */}
       <section className="su-notes">
         <div className="su-notes-grid">
           <div>
             <div className="su-notes-num">01</div>
-            <div className="su-notes-h">Cloth, first.</div>
-            <p>We begin every season with the mills — Fox Brothers, Holland &amp;
-              Sherry, Caccioppoli — and design around what the looms made well.</p>
+            <div className="su-notes-h">Style, always.</div>
+            <p>Turkish craftsmanship in contemporary silhouettes — slim Italian cuts,
+              peak and notch lapels, three-piece options across the full range.</p>
           </div>
           <div>
             <div className="su-notes-num">02</div>
-            <div className="su-notes-h">Half-canvas, always.</div>
-            <p>A floating horsehair canvas through the chest. Heavier on the lapel,
-              lighter through the body. It moves with you, and softens over years.</p>
+            <div className="su-notes-h">Service that stays.</div>
+            <p>Our staff know the range and know how a suit should fit.
+              Come in, try it on, leave looking right. Both stores, six days a week.</p>
           </div>
           <div>
             <div className="su-notes-num">03</div>
-            <div className="su-notes-h">Made in small runs.</div>
-            <p>We cut between forty and sixty of each suit from our Lusaka workshop.
-              When the cloth is done, the suit is done. We don&apos;t reprint.</p>
+            <div className="su-notes-h">Quality you can see.</div>
+            <p>Premium poly-blends that hold their structure, move with you, and photograph
+              as well on the day as they will a year from now.</p>
           </div>
           <div>
             <div className="su-notes-num">04</div>
-            <div className="su-notes-h">Altered for life.</div>
-            <p>Any piece bought here, altered in our workshop — for as long as you
-              wear it. No charge, ever.</p>
+            <div className="su-notes-h">Price you&apos;ll respect.</div>
+            <p>Complete three-piece suits from K5,999. No compromise on the look —
+              just an honest price for a Lusaka wardrobe.</p>
           </div>
         </div>
       </section>

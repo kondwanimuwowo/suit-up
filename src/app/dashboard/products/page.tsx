@@ -24,7 +24,7 @@ export default function ProductsPage() {
     <>
       <Topbar
         title="Products"
-        breadcrumb={["Workshop", "Products"]}
+        breadcrumb={["Store", "Products"]}
         rightSlot={
           <>
             <button className="su-btn su-btn--ghost su-btn--sm">Import</button>

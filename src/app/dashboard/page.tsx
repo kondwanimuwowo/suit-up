@@ -37,7 +37,7 @@ export default function OverviewPage() {
     <>
       <Topbar
         title="Overview"
-        breadcrumb={["Workshop", "Overview"]}
+        breadcrumb={["Store", "Overview"]}
         period={period}
         setPeriod={setPeriod}
         rightSlot={
@@ -52,7 +52,7 @@ export default function OverviewPage() {
           <span className="su-eyebrow">Monday, 25 May 2026</span>
           <h2 className="su-tb-greet">
             Good morning, Eliza.<br />
-            <em>Six fittings on the floor this week.</em>
+            <em>Ten appointments in store this week.</em>
           </h2>
         </div>
         <div className="su-tb-meta">
@@ -61,7 +61,7 @@ export default function OverviewPage() {
             <span className="su-tb-meta-v">12</span>
           </div>
           <div>
-            <span className="su-tb-meta-l">In cutting</span>
+            <span className="su-tb-meta-l">Processing</span>
             <span className="su-tb-meta-v">7</span>
           </div>
           <div>

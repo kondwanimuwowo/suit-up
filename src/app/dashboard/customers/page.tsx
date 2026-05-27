@@ -21,7 +21,7 @@ export default function CustomersPage() {
     <>
       <Topbar
         title="Customers"
-        breadcrumb={["Workshop", "Customers"]}
+        breadcrumb={["Store", "Customers"]}
         rightSlot={
           <button className="su-btn su-btn--ink su-btn--sm">New customer <IconArrow /></button>
         }
@@ -63,9 +63,9 @@ export default function CustomersPage() {
                 </td>
                 <td className="su-tcell-sub">{c.city}</td>
                 <td>
-                  <span className={"su-pill su-pill--" + (c.segment === "MTM" ? "accent" : "neutral")}>
+                  <span className={"su-pill su-pill--" + (c.segment === "Regular" ? "accent" : "neutral")}>
                     <Dot />
-                    {c.segment === "MTM" ? "Made to measure" : "Ready to wear"}
+                    {c.segment}
                   </span>
                 </td>
                 <td className="su-tcell-sub">

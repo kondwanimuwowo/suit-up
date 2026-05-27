@@ -343,10 +343,13 @@ a, button { cursor: pointer; }
 }
 .su-card--overlay:hover .su-card-overlay { opacity: 1; }
 .su-card-name--over { font-family: var(--su-display); font-weight: var(--su-display-w); font-size: 26px; line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
-.su-card-sub--over { font-size: 12px; opacity: 0.85; }
+.su-card-sub--over { font-size: 12px; color: #fff; }
 .su-card-price--over { align-self: flex-start; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 12px; background: var(--su-bg); color: var(--su-fg); font-variant-numeric: tabular-nums; }
-.su-card-strip { display: flex; justify-content: space-between; font-size: 12px; padding-top: 4px; font-variant-numeric: tabular-nums; }
-.su-card-strip span:first-child { color: var(--su-muted); }
+.su-card-strip { padding-top: 4px; font-variant-numeric: tabular-nums; }
+.su-card-strip-name { display: none; }
+.su-card-strip-sub  { display: none; }
+.su-card-strip-main { display: none; }
+/* Desktop: keep the legacy color+price one-liner via the overlay hover — strip is hidden */
 
 /* ─── Editorial callout ────────────────────────────────────────────────── */
 .su-editorial {
@@ -448,7 +451,14 @@ a, button { cursor: pointer; }
 /* ─── PDP ──────────────────────────────────────────────────────────────── */
 .su-pdp-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 4vw, 72px); padding-bottom: clamp(48px, 6vw, 96px); border-bottom: 1px solid var(--su-hair); }
 .su-pdp-gallery { display: flex; flex-direction: column; gap: 14px; }
-.su-pdp-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.su-pdp-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.su-pdp-thumb {
+  appearance: none; border: 2px solid transparent; background: transparent; padding: 0;
+  cursor: pointer; overflow: hidden; display: block;
+  transition: border-color .2s ease;
+}
+.su-pdp-thumb:hover { border-color: var(--su-hair); }
+.su-pdp-thumb.is-active { border-color: var(--su-fg); }
 .su-pdp-info { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
 .su-pdp-info > .su-eyebrow { margin-bottom: 4px; }
 .su-pdp-name { font-family: var(--su-display); font-weight: var(--su-display-w); font-size: clamp(40px, 4.6vw, 64px); line-height: 0.98; letter-spacing: -0.012em; margin: 0 0 4px; }
@@ -901,6 +911,14 @@ a, button { cursor: pointer; }
 
   /* Grids */
   .su-grid--3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Product cards — show info below image instead of hover overlay */
+  .su-card-overlay { display: none; }
+  .su-card-strip { padding-top: 10px; display: flex; flex-direction: column; gap: 3px; }
+  .su-card-strip-main { display: flex; justify-content: space-between; align-items: baseline; }
+  .su-card-strip-name { display: block; font-size: 14px; font-family: var(--su-display); font-weight: var(--su-display-w); letter-spacing: -0.01em; line-height: 1.2; color: var(--su-fg); }
+  .su-card-strip-price { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-variant-numeric: tabular-nums; color: var(--su-fg); }
+  .su-card-strip-sub { display: block; font-size: 11.5px; color: var(--su-muted); }
 
   /* Footer */
   .su-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }

@@ -31,7 +31,7 @@ export default function InsightsPage() {
     <>
       <Topbar
         title="Insights"
-        breadcrumb={["Workshop", "Insights"]}
+        breadcrumb={["Store", "Insights"]}
         period={period}
         setPeriod={setPeriod}
         rightSlot={
@@ -128,16 +128,16 @@ export default function InsightsPage() {
         <div className="su-panel">
           <div className="su-panel-hd">
             <div>
-              <div className="su-eyebrow">Made-to-measure lead</div>
-              <h3 className="su-panel-h">5.8 weeks</h3>
+              <div className="su-eyebrow">Avg. order processing</div>
+              <h3 className="su-panel-h">2.1 days</h3>
             </div>
           </div>
           <p className="su-panel-p">
-            Down from 6.4 weeks last quarter. New cutter in the Lusaka
-            workshop reduced wait for second fittings by 9 days.
+            Down from 3.4 days last quarter. Improved stock organisation
+            at Arcades Mall reduced same-day collection wait by 40%.
           </p>
           <div className="su-panel-foot">
-            <span>Target: 5.0 weeks by Q4.</span>
+            <span>Target: 1.5 days by Q4.</span>
           </div>
         </div>
       </section>

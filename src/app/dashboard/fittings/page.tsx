@@ -10,8 +10,8 @@ export default function FittingsPage() {
   return (
     <>
       <Topbar
-        title="Fittings"
-        breadcrumb={["Workshop", "Fittings"]}
+        title="Appointments"
+        breadcrumb={["Store", "Appointments"]}
         rightSlot={
           <>
             <button className="su-btn su-btn--ghost su-btn--sm">Print week</button>
@@ -26,16 +26,16 @@ export default function FittingsPage() {
           <span className="su-stat-v">10</span>
         </div>
         <div>
-          <span className="su-eyebrow">First fittings</span>
+          <span className="su-eyebrow">In-store visits</span>
+          <span className="su-stat-v">4</span>
+        </div>
+        <div>
+          <span className="su-eyebrow">Collections</span>
           <span className="su-stat-v">2</span>
         </div>
         <div>
-          <span className="su-eyebrow">Final fittings</span>
+          <span className="su-eyebrow">Exchanges</span>
           <span className="su-stat-v">2</span>
-        </div>
-        <div>
-          <span className="su-eyebrow">Avg. lead time</span>
-          <span className="su-stat-v">5.8 wk</span>
         </div>
       </section>
 
@@ -62,14 +62,14 @@ export default function FittingsPage() {
                       <div className="su-fit-name">{c?.name}</div>
                       <div className="su-fit-sub">{f.type}</div>
                       <div className="su-fit-meta">
-                        <span>{f.workshop}</span>
+                        <span>{f.store}</span>
                         <span>·</span>
-                        <span>{f.cutter}</span>
+                        <span>{f.staff}</span>
                       </div>
                     </div>
                   );
                 })}
-                {day.length === 0 && <div className="su-fit-empty">No fittings.</div>}
+                {day.length === 0 && <div className="su-fit-empty">No appointments.</div>}
               </div>
             </div>
           );
