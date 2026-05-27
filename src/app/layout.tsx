@@ -17,9 +17,23 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Suit Up Zambia — Considered Tailoring",
+  title: "Suit Up Zambia — Style. Service. Quality. Price.",
   description:
-    "Quiet-luxury tailoring, made in Lusaka. Half-canvas suits, Italian shirtings, and hand-finished accessories.",
+    "Turkish-crafted formal wear for the Zambian professional. Suits, shirts, and accessories. Two stores in Lusaka — Arcades Mall & Mosi oa Tunya Mall.",
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
+  openGraph: {
+    title: "Suit Up Zambia — Style. Service. Quality. Price.",
+    description:
+      "Turkish-crafted formal wear for the Zambian professional. Two stores in Lusaka.",
+    url: "https://suit-up-zm.vercel.app",
+    siteName: "Suit Up Zambia",
+    images: [{ url: "/logo.jpg", width: 200, height: 90, alt: "Suit Up Zambia" }],
+    locale: "en_ZM",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

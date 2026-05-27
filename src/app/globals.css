@@ -381,6 +381,9 @@ a, button { cursor: pointer; }
 .su-footer-logo { font-family: var(--su-display); font-style: italic; font-size: 38px; line-height: 1; letter-spacing: -0.01em; }
 [data-typeset="italiana-work"] .su-footer-logo { font-style: normal; }
 .su-footer-tag { font-family: var(--su-display); font-size: 20px; line-height: 1.25; opacity: 0.78; }
+.su-footer-contact { display: flex; flex-direction: column; gap: 4px; }
+.su-footer-contact a { font-size: 13px; color: var(--su-bg); opacity: 0.78; text-decoration: none; transition: opacity .2s; }
+.su-footer-contact a:hover { opacity: 1; }
 .su-footer-col { display: flex; flex-direction: column; gap: 10px; }
 .su-footer-h { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
 .su-footer-col a { font-size: 13px; color: var(--su-bg); opacity: 0.78; text-decoration: none; transition: opacity .2s, color .2s; cursor: pointer; }
