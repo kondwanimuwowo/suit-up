@@ -20,10 +20,6 @@ export const metadata: Metadata = {
   title: "Suit Up Zambia — Style. Service. Quality. Price.",
   description:
     "Turkish-crafted formal wear for the Zambian professional. Suits, shirts, and accessories. Two stores in Lusaka — Arcades Mall & Mosi oa Tunya Mall.",
-  icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
-  },
   openGraph: {
     title: "Suit Up Zambia — Style. Service. Quality. Price.",
     description:
