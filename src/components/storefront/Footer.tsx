@@ -43,8 +43,8 @@ export default function Footer() {
           <div className="su-footer-h">Stay in the loop</div>
           <p>New arrivals, promotions, and style notes. Straight to your inbox.</p>
           <form className="su-news-form" onSubmit={(e) => e.preventDefault()}>
-            <input placeholder="Your email" />
-            <button type="submit"><IconArrow /></button>
+            <input type="email" placeholder="Your email address" />
+            <button type="submit">Subscribe</button>
           </form>
         </div>
       </div>

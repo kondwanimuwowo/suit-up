@@ -396,11 +396,12 @@ a, button { cursor: pointer; }
 .su-footer-h { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
 .su-footer-col a { font-size: 14px; color: var(--su-bg); opacity: 0.78; text-decoration: none; transition: opacity .2s, color .2s; cursor: pointer; }
 .su-footer-col a:hover { opacity: 1; color: var(--su-accent); }
-.su-footer-news p { font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0 0 14px; max-width: 28ch; }
-.su-news-form { display: flex; border-bottom: 1px solid color-mix(in oklab, var(--su-bg) 30%, transparent); }
-.su-news-form input { flex: 1; background: transparent; border: 0; color: var(--su-bg); font: inherit; padding: 8px 0; outline: none; }
-.su-news-form input::placeholder { color: color-mix(in oklab, var(--su-bg) 45%, transparent); }
-.su-news-form button { appearance: none; background: transparent; border: 0; padding: 8px 4px; color: var(--su-bg); }
+.su-footer-news p { font-size: 14px; line-height: 1.6; opacity: 0.7; margin: 0 0 18px; max-width: 28ch; }
+.su-news-form { display: flex; border: 1px solid color-mix(in oklab, var(--su-bg) 30%, transparent); margin-top: 4px; }
+.su-news-form input { flex: 1; background: transparent; border: 0; color: var(--su-bg); font: inherit; font-size: 14px; padding: 13px 16px; outline: none; min-width: 0; }
+.su-news-form input::placeholder { color: color-mix(in oklab, var(--su-bg) 40%, transparent); }
+.su-news-form button { appearance: none; background: var(--su-bg); border: 0; padding: 13px 18px; color: var(--su-fg); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; white-space: nowrap; transition: background .2s, color .2s; flex: none; }
+.su-news-form button:hover { background: var(--su-accent); color: #fff; }
 .su-footer-base {
   margin-top: 64px; padding-top: 24px;
   border-top: 1px solid color-mix(in oklab, var(--su-bg) 18%, transparent);
