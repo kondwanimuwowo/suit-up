@@ -425,14 +425,50 @@ a, button { cursor: pointer; }
 .su-breadcrumbs button:hover { color: var(--su-accent); }
 .su-breadcrumbs--pdp { margin: 24px 0 24px; padding: 0; }
 .su-plp-body {
-  display: grid; grid-template-columns: 220px 1fr;
-  gap: clamp(28px, 4vw, 72px);
   padding-top: clamp(28px, 3.6vw, 48px);
   padding-bottom: clamp(56px, 7vw, 112px);
 }
-.su-filters { display: flex; flex-direction: column; gap: 32px; position: sticky; top: 24px; align-self: flex-start; max-height: calc(100vh - 48px); overflow-y: auto; padding-right: 8px; }
+.su-filters { display: flex; flex-direction: column; gap: 32px; }
 .su-filters::-webkit-scrollbar { width: 6px; }
 .su-filters::-webkit-scrollbar-thumb { background: var(--su-hair); }
+
+/* ─── Filter drawer ─────────────────────────────────────────────────────── */
+.su-filter-backdrop {
+  position: fixed; inset: 0; z-index: 49;
+  background: color-mix(in oklab, var(--su-fg) 45%, transparent);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.su-filter-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+.su-filter-drawer {
+  position: fixed; top: 0; left: 0; bottom: 0; z-index: 50;
+  width: 320px; background: var(--su-bg);
+  display: flex; flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  box-shadow: 4px 0 32px -8px color-mix(in oklab, var(--su-fg) 20%, transparent);
+}
+.su-filter-drawer.is-open { transform: translateX(0); }
+.su-filter-drawer-hd {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 24px 18px; border-bottom: 1px solid var(--su-hair); flex: none;
+}
+.su-filter-drawer-title { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+.su-filter-drawer .su-filters { padding: 24px 24px 0; overflow-y: auto; flex: 1; }
+.su-filter-drawer-foot { padding: 20px 24px; border-top: 1px solid var(--su-hair); flex: none; }
+
+/* Mobile: full-screen modal instead of side drawer */
+@media (max-width: 768px) {
+  .su-filter-drawer {
+    top: auto; left: 0; right: 0; bottom: 0;
+    width: 100%; max-height: 85vh;
+    transform: translateY(100%);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 40px -8px color-mix(in oklab, var(--su-fg) 20%, transparent);
+  }
+  .su-filter-drawer.is-open { transform: translateY(0); }
+}
 .su-filter-section { display: flex; flex-direction: column; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid var(--su-hair); }
 .su-filter-section:last-of-type { border-bottom: 0; }
 .su-filter-h { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--su-fg); margin-bottom: 4px; }
@@ -859,35 +895,7 @@ a, button { cursor: pointer; }
   color: var(--su-muted); text-align: center;
 }
 
-/* ─── Filter modal (mobile) ────────────────────────────────────────────── */
-.su-filter-modal-btn { display: none; }
-.su-filter-modal-bg {
-  display: none;
-  position: fixed; inset: 0; z-index: 90;
-  background: color-mix(in oklab, var(--su-fg) 40%, transparent);
-  backdrop-filter: blur(2px);
-  align-items: flex-end;
-}
-.su-filter-modal-bg.is-open { display: flex; animation: su-fade .2s ease; }
-.su-filter-sheet {
-  width: 100%; max-height: 84vh; overflow-y: auto;
-  background: var(--su-bg);
-  padding: 0 clamp(20px, 5vw, 40px) 40px;
-  display: flex; flex-direction: column;
-  animation: su-sheet .3s cubic-bezier(.4,.2,.2,1);
-}
-@keyframes su-sheet {
-  from { transform: translateY(32px); opacity: 0; }
-  to   { transform: none; opacity: 1; }
-}
-.su-filter-sheet-hd {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 0 18px; border-bottom: 1px solid var(--su-hair);
-  position: sticky; top: 0; background: var(--su-bg); z-index: 1;
-  margin-bottom: 0;
-}
-.su-filter-sheet-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
-.su-filter-sheet-apply { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--su-hair); }
+/* Filter modal/sheet styles removed — drawer handles all screen sizes */
 
 /* ─── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width: 1280px) {
@@ -926,8 +934,6 @@ a, button { cursor: pointer; }
   .su-hero--editorial, .su-hero--split, .su-editorial,
   .su-pdp-grid, .su-cart-body { grid-template-columns: 1fr; }
   .su-plp-body { grid-template-columns: 1fr; }
-  .su-filters { display: none; }
-  .su-filter-modal-btn { display: inline-flex; }
   .su-co-grid { grid-template-columns: 1fr; }
   .su-co-summary { position: static; order: -1; }
 

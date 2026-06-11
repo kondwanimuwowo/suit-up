@@ -22,10 +22,7 @@ export default function CollectionPage() {
   const cat = (params.cat as string) || "all";
 
   const [sort, setSort] = useState("featured");
-  const [filters, setFilters] = useState<{ color: string[]; fabric: string[] }>({
-    color: [],
-    fabric: [],
-  });
+  const [filters, setFilters] = useState<{ color: string[]; fabric: string[] }>({ color: [], fabric: [] });
   const [filterOpen, setFilterOpen] = useState(false);
 
   const all = cat === "all" ? CATALOG : CATALOG.filter((p) => p.cat === cat);
@@ -50,90 +47,6 @@ export default function CollectionPage() {
   const hasFilters = filters.color.length > 0 || filters.fabric.length > 0;
   const activeCount = filters.color.length + filters.fabric.length;
 
-  const FilterContent = () => (
-    <>
-      {/* Category */}
-      <div className="su-filter-section">
-        <div className="su-filter-h">Category</div>
-        <div className="su-filter-list">
-          {CATEGORIES.map((c) => (
-            <Link
-              key={c.id}
-              href={`/collection/${c.id}`}
-              className={"su-filter-link" + (cat === c.id ? " is-active" : "")}
-              style={{ textDecoration: "none" }}
-              onClick={() => setFilterOpen(false)}
-            >
-              {c.label}
-              <span className="su-filter-count">
-                {c.id === "all" ? CATALOG.length : CATALOG.filter((p) => p.cat === c.id).length}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Colour */}
-      <div className="su-filter-section">
-        <div className="su-filter-h">Colour</div>
-        <div className="su-filter-list">
-          {colors.map((c) => (
-            <label key={c} className="su-check">
-              <input
-                type="checkbox"
-                checked={filters.color.includes(c)}
-                onChange={() => toggle("color", c)}
-              />
-              <span className="su-check-box"><span /></span>
-              <span>{c}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {/* Cloth */}
-      <div className="su-filter-section">
-        <div className="su-filter-h">Cloth</div>
-        <div className="su-filter-list">
-          {fabrics.map((f) => (
-            <label key={f} className="su-check">
-              <input
-                type="checkbox"
-                checked={filters.fabric.includes(f)}
-                onChange={() => toggle("fabric", f)}
-              />
-              <span className="su-check-box"><span /></span>
-              <span>{f}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {/* Made in */}
-      <div className="su-filter-section">
-        <div className="su-filter-h">Made in</div>
-        <div className="su-filter-list">
-          {MADE_IN.map((m) => (
-            <label key={m} className="su-check">
-              <input type="checkbox" readOnly />
-              <span className="su-check-box"><span /></span>
-              <span>{m}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {hasFilters && (
-        <button
-          className="su-link su-clear"
-          onClick={() => setFilters({ color: [], fabric: [] })}
-        >
-          Clear filters
-        </button>
-      )}
-    </>
-  );
-
   return (
     <main className="su-plp">
       <div className="su-plp-head">
@@ -147,82 +60,137 @@ export default function CollectionPage() {
       </div>
 
       <div className="su-plp-body">
-        {/* Desktop sidebar */}
-        <aside className="su-filters">
-          <FilterContent />
-        </aside>
-
-        <div className="su-plp-main">
-          <div className="su-plp-bar">
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span className="su-plp-count">{products.length} pieces</span>
-              <button
-                className="su-filter-modal-btn su-btn su-btn--ghost su-btn--sm"
-                onClick={() => setFilterOpen(true)}
-              >
-                Filters{activeCount > 0 ? ` · ${activeCount}` : ""}
-              </button>
-            </div>
-            <div className="su-sort">
-              <span>Sort</span>
-              <select value={sort} onChange={(e) => setSort(e.target.value)}>
-                <option value="featured">Featured</option>
-                <option value="low">Price · Low to high</option>
-                <option value="high">Price · High to low</option>
-              </select>
-            </div>
+        <div className="su-plp-bar">
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span className="su-plp-count">{products.length} pieces</span>
+            <button
+              className="su-btn su-btn--ghost su-btn--sm"
+              onClick={() => setFilterOpen(true)}
+            >
+              Filters{activeCount > 0 ? ` · ${activeCount}` : ""}
+            </button>
           </div>
-
-          {products.length === 0 ? (
-            <div className="su-empty">
-              <div className="su-empty-h">Nothing matches.</div>
-              <p>Try clearing a filter or browsing a different category.</p>
-              <button
-                className="su-link"
-                onClick={() => setFilters({ color: [], fabric: [] })}
-              >
-                Clear filters <IconArrow />
-              </button>
-            </div>
-          ) : (
-            <div className="su-grid su-grid--3">
-              {products.map((p, i) => (
-                <ProductCard key={p.id} product={p} cardStyle="overlay" priority={i < 3} />
-              ))}
-            </div>
-          )}
+          <div className="su-sort">
+            <span>Sort</span>
+            <select value={sort} onChange={(e) => setSort(e.target.value)}>
+              <option value="featured">Featured</option>
+              <option value="low">Price · Low to high</option>
+              <option value="high">Price · High to low</option>
+            </select>
+          </div>
         </div>
+
+        {products.length === 0 ? (
+          <div className="su-empty">
+            <div className="su-empty-h">Nothing matches.</div>
+            <p>Try clearing a filter or browsing a different category.</p>
+            <button className="su-link" onClick={() => setFilters({ color: [], fabric: [] })}>
+              Clear filters <IconArrow />
+            </button>
+          </div>
+        ) : (
+          <div className="su-grid su-grid--4">
+            {products.map((p, i) => (
+              <ProductCard key={p.id} product={p} cardStyle="overlay" priority={i < 4} />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Mobile filter bottom sheet */}
-      {filterOpen && (
-        <div
-          className="su-filter-modal-bg is-open"
-          onClick={() => setFilterOpen(false)}
-        >
-          <div className="su-filter-sheet" onClick={(e) => e.stopPropagation()}>
-            <div className="su-filter-sheet-hd">
-              <span className="su-filter-sheet-title">
-                Filters{activeCount > 0 ? ` · ${activeCount} active` : ""}
-              </span>
-              <button className="su-icon-btn" onClick={() => setFilterOpen(false)} aria-label="Close">
-                <IconClose />
-              </button>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-              <FilterContent />
-            </div>
-            <div className="su-filter-sheet-apply">
-              <button
-                className="su-btn su-btn--ink su-btn--lg"
-                onClick={() => setFilterOpen(false)}
-              >
-                Show {products.length} pieces <IconArrow />
-              </button>
+      {/* Filter drawer backdrop */}
+      <div
+        className={"su-filter-backdrop" + (filterOpen ? " is-open" : "")}
+        onClick={() => setFilterOpen(false)}
+      />
+
+      {/* Filter drawer */}
+      <div className={"su-filter-drawer" + (filterOpen ? " is-open" : "")} aria-hidden={!filterOpen}>
+        <div className="su-filter-drawer-hd">
+          <span className="su-filter-drawer-title">
+            Filters{activeCount > 0 ? ` · ${activeCount}` : ""}
+          </span>
+          <button className="su-icon-btn" onClick={() => setFilterOpen(false)} aria-label="Close filters">
+            <IconClose />
+          </button>
+        </div>
+
+        <div className="su-filters">
+          {/* Category */}
+          <div className="su-filter-section">
+            <div className="su-filter-h">Category</div>
+            <div className="su-filter-list">
+              {CATEGORIES.map((c) => (
+                <Link
+                  key={c.id}
+                  href={`/collection/${c.id}`}
+                  className={"su-filter-link" + (cat === c.id ? " is-active" : "")}
+                  style={{ textDecoration: "none" }}
+                  onClick={() => setFilterOpen(false)}
+                >
+                  {c.label}
+                  <span className="su-filter-count">
+                    {c.id === "all" ? CATALOG.length : CATALOG.filter((p) => p.cat === c.id).length}
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
+
+          {/* Colour */}
+          <div className="su-filter-section">
+            <div className="su-filter-h">Colour</div>
+            <div className="su-filter-list">
+              {colors.map((c) => (
+                <label key={c} className="su-check">
+                  <input type="checkbox" checked={filters.color.includes(c)} onChange={() => toggle("color", c)} />
+                  <span className="su-check-box"><span /></span>
+                  <span>{c}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Cloth */}
+          <div className="su-filter-section">
+            <div className="su-filter-h">Cloth</div>
+            <div className="su-filter-list">
+              {fabrics.map((f) => (
+                <label key={f} className="su-check">
+                  <input type="checkbox" checked={filters.fabric.includes(f)} onChange={() => toggle("fabric", f)} />
+                  <span className="su-check-box"><span /></span>
+                  <span>{f}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Made in */}
+          <div className="su-filter-section">
+            <div className="su-filter-h">Made in</div>
+            <div className="su-filter-list">
+              {MADE_IN.map((m) => (
+                <label key={m} className="su-check">
+                  <input type="checkbox" readOnly />
+                  <span className="su-check-box"><span /></span>
+                  <span>{m}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {hasFilters && (
+            <button className="su-link su-clear" onClick={() => setFilters({ color: [], fabric: [] })}>
+              Clear filters
+            </button>
+          )}
         </div>
-      )}
+
+        <div className="su-filter-drawer-foot">
+          <button className="su-btn su-btn--ink su-btn--lg" onClick={() => setFilterOpen(false)}>
+            Show {products.length} pieces <IconArrow />
+          </button>
+        </div>
+      </div>
     </main>
   );
 }
