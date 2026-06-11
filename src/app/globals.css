@@ -10,6 +10,7 @@
 html, body, #root {
   height: 100%;
   margin: 0;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -491,7 +492,7 @@ a, button { cursor: pointer; }
 .su-check input:checked + .su-check-box span { opacity: 1; }
 .su-check:hover .su-check-box { border-color: var(--su-fg); }
 .su-clear { margin-top: -8px; align-self: flex-start; }
-.su-plp-main { min-width: 0; }
+.su-plp-main { flex: 1; min-width: 0; width: 0; }
 .su-plp-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--su-hair); }
 .su-plp-count { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--su-muted); }
 .su-sort { display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--su-muted); }

@@ -179,7 +179,7 @@ export default function CollectionPage() {
               </button>
             </div>
           ) : (
-            <div className={"su-grid " + (filterOpen ? "su-grid--3" : "su-grid--4")}>
+            <div className={"su-grid " + (filterOpen ? "su-grid--2" : "su-grid--3")}>
               {products.map((p, i) => (
                 <ProductCard key={p.id} product={p} cardStyle="overlay" priority={i < 4} />
               ))}
