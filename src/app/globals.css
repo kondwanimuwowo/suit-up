@@ -65,6 +65,35 @@ a, button { cursor: pointer; }
 }
 .su-scroll::-webkit-scrollbar-track { background: transparent; }
 
+/* ─── Loading screen ───────────────────────────────────────────────────── */
+.su-loading {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--su-bg);
+  display: flex; align-items: center; justify-content: center;
+}
+.su-loading-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+.su-loading-logo {
+  animation: su-loading-fade 1.4s ease-in-out infinite alternate;
+}
+.su-loading-bar {
+  width: 120px; height: 1px; background: var(--su-hair); overflow: hidden;
+}
+.su-loading-bar-fill {
+  height: 100%; width: 40%;
+  background: var(--su-accent);
+  animation: su-loading-slide 1.4s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes su-loading-fade {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+@keyframes su-loading-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+
 /* ─── Display & utility ────────────────────────────────────────────────── */
 .su-display {
   font-family: var(--su-display);
