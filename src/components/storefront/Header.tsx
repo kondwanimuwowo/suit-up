@@ -10,6 +10,7 @@ import { IconBag, IconSearch, IconUser, IconClose, IconMenu } from "@/components
 const SHOP_NAV = [
   { href: "/collection/suits",   label: "Suits" },
   { href: "/collection/shirts",  label: "Shirts" },
+  { href: "/collection/shoes",   label: "Shoes" },
   { href: "/collection/ties",    label: "Accessories" },
 ];
 

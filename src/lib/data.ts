@@ -327,22 +327,23 @@ export const CATALOG: Product[] = [
 
   // ─── Accessories ───────────────────────────────────────────────────────
   {
-    id: "su-tie-burgundy",
-    name: "Burgundy Tie",
+    id: "su-tie-slate",
+    name: "Slate Blue Tie",
     cat: "ties",
     subtitle: "Woven Silk-Feel",
     price: 799,
     fabric: "Polyester satin",
-    color: "Burgundy",
-    swatch: ["#5a1f24", "#3d1418"],
-    hueA: "10 18%",
-    hueB: "10 14%",
-    lA: 70,
-    lB: 44,
+    color: "Slate Blue",
+    swatch: ["#8090a8", "#606e84"],
+    hueA: "215 10%",
+    hueB: "215 8%",
+    lA: 80,
+    lB: 62,
     description:
-      "A deep burgundy in a silk-feel woven fabric — the right finish to the navy, grey or charcoal suits in the range.",
+      "A muted slate blue — sits beautifully against the grey suits and ivory, and softens the stronger navy pieces. The most versatile tie in the range.",
     fit: "7cm blade · Standard length",
     origin: "Imported",
+    images: ["/images/suits/tie-1.jpg"],
   },
   {
     id: "su-tie-navy",
@@ -358,9 +359,79 @@ export const CATALOG: Product[] = [
     lA: 74,
     lB: 52,
     description:
-      "A navy woven tie — simple, correct, always appropriate. Pairs with the grey suits and the stone for a controlled, well-considered look.",
+      "A deep navy woven tie — simple, correct, always appropriate. Pairs with the grey suits and the stone for a controlled, well-considered look.",
     fit: "7cm blade · Standard length",
     origin: "Imported",
+    images: ["/images/suits/tie-2.jpg"],
+  },
+  {
+    id: "su-tie-cream",
+    name: "Cream Tie",
+    cat: "ties",
+    subtitle: "Woven Silk-Feel",
+    price: 799,
+    fabric: "Polyester satin",
+    color: "Cream",
+    swatch: ["#ede5d4", "#d8cebb"],
+    hueA: "38 8%",
+    hueB: "38 6%",
+    lA: 94,
+    lB: 82,
+    description:
+      "A warm cream tie — the natural companion to the ivory and stone suits, and a clean contrast against navy or charcoal. Understated and intentional.",
+    fit: "7cm blade · Standard length",
+    origin: "Imported",
+    images: ["/images/suits/tie-3.jpg"],
+  },
+
+  // ─── Shoes ─────────────────────────────────────────────────────────────
+  {
+    id: "su-shoe-black",
+    name: "Black Oxford",
+    cat: "shoes",
+    subtitle: "High-Gloss Lace-Up",
+    price: 2499,
+    fabric: "Synthetic patent leather",
+    color: "Black",
+    swatch: ["#1a1a1a", "#0a0a0a"],
+    hueA: "0 0%",
+    hueB: "0 0%",
+    lA: 60,
+    lB: 36,
+    description:
+      "A clean, high-gloss black Oxford — the shoe that finishes any of the suits without asking for attention. Lace-up, low block heel, slim toe. Dress it up or down.",
+    fit: "EU 39 – 45",
+    origin: "Imported",
+    images: [
+      "/images/suits/shoe-1a.jpg",
+      "/images/suits/shoe-1b.jpg",
+      "/images/suits/shoe-1c.jpg",
+      "/images/suits/shoe-1d.jpg",
+    ],
+  },
+  {
+    id: "su-shoe-brown",
+    name: "Dark Brown Oxford",
+    cat: "shoes",
+    subtitle: "Cap-Toe · Matte Leather",
+    price: 2499,
+    fabric: "Synthetic leather",
+    color: "Dark Brown",
+    swatch: ["#3d2314", "#27160c"],
+    hueA: "22 16%",
+    hueB: "22 12%",
+    lA: 68,
+    lB: 46,
+    description:
+      "A dark brown cap-toe Oxford in a matte finish — the warmer alternative to black. Works best with the stone, ivory, and charcoal suits. Brown sole, contrast stitching detail.",
+    fit: "EU 39 – 45",
+    origin: "Imported",
+    images: [
+      "/images/suits/shoe-2a.jpg",
+      "/images/suits/shoe-2b.jpg",
+      "/images/suits/shoe-2c.jpg",
+      "/images/suits/shoe-2d.jpg",
+    ],
   },
 ];
 
@@ -368,7 +439,7 @@ export const SIZES: Record<string, string[]> = {
   suits: ["44", "46", "48", "50", "52", "54", "56", "58"],
   shirts: ["S", "M", "L", "XL", "XXL"],
   ties: ["One Size"],
-  shoes: [],
+  shoes: ["39", "40", "41", "42", "43", "44", "45"],
 };
 
 export const CATEGORIES = [
@@ -376,6 +447,7 @@ export const CATEGORIES = [
   { id: "suits",  label: "Suits" },
   { id: "shirts", label: "Shirts" },
   { id: "ties",   label: "Accessories" },
+  { id: "shoes",  label: "Shoes" },
 ] as const;
 
 /** Format as Zambian Kwacha */
