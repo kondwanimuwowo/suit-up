@@ -110,8 +110,7 @@ export const IconMenu = (p: P) => (
 );
 
 export const IconStore = (p: P) => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" {...p}>
-    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" strokeWidth="1" />
-    <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" strokeWidth="1" />
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" {...p}>
+    <path d="M12 2.1 1 11h3v10a1 1 0 0 0 1 1h6v-6h2v6h6a1 1 0 0 0 1-1V11h3L12 2.1Z" />
   </svg>
 );
