@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
+        <NextTopLoader color="#21354b" height={3} showSpinner={false} shadow={false} />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
