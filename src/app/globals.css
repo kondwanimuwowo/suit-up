@@ -7,10 +7,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html, body, #root {
-  height: 100%;
+html, body {
   margin: 0;
-  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,25 +43,16 @@ a, button { cursor: pointer; }
 
 /* ─── Root layout ──────────────────────────────────────────────────────── */
 .su-root {
-  display: flex; flex-direction: column;
-  height: 100vh;
   background: var(--su-bg);
   color: var(--su-fg);
   font-family: var(--su-body);
   font-weight: var(--su-body-w, 400);
+  min-height: 100dvh;
 }
 
-.su-scroll {
-  flex: 1; min-height: 0;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-.su-scroll::-webkit-scrollbar { width: 10px; }
-.su-scroll::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--su-fg) 18%, transparent);
-  border-radius: 0;
-}
-.su-scroll::-webkit-scrollbar-track { background: transparent; }
+/* su-scroll is kept for scroll-position detection but no longer clips */
+.su-scroll { display: contents; }
+
 
 /* ─── Loading screen ───────────────────────────────────────────────────── */
 .su-loading {
@@ -207,7 +196,7 @@ a, button { cursor: pointer; }
 
 /* ─── Header ───────────────────────────────────────────────────────────── */
 .su-header {
-  flex: none;
+  position: sticky; top: 0;
   background: var(--su-bg);
   transition: background .25s ease, box-shadow .25s ease;
   z-index: 30;

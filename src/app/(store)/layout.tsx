@@ -1,5 +1,6 @@
 import Header from "@/components/storefront/Header";
 import Footer from "@/components/storefront/Footer";
+import ScrollToTop from "@/components/storefront/ScrollToTop";
 
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
         </div>
       </div>
       <Header />
+      <ScrollToTop />
       <div className="su-scroll">
         {children}
         <Footer />
