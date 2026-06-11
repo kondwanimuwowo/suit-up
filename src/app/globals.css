@@ -323,11 +323,11 @@ a, button { cursor: pointer; }
 .su-grid--2 { grid-template-columns: repeat(2, 1fr); }
 
 /* ─── ProductCard ──────────────────────────────────────────────────────── */
-.su-card { cursor: pointer; background: transparent; border: 0; text-align: left; position: relative; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .35s ease; box-shadow: 0 0 0 3px var(--su-accent); }
+.su-card { cursor: pointer; background: transparent; border: 3px solid var(--su-accent); text-align: left; position: relative; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .35s ease; }
 .su-card-img-wrap { overflow: hidden; }
 .su-card .su-img { transition: transform .9s cubic-bezier(.2,.6,.2,1); }
 .su-card:hover .su-img { transform: scale(1.035); }
-.su-card:hover { box-shadow: 0 0 0 3px var(--su-accent), 0 12px 48px -16px color-mix(in oklab, var(--su-fg) 18%, transparent); }
+.su-card:hover { box-shadow: 0 12px 48px -16px color-mix(in oklab, var(--su-fg) 18%, transparent); }
 
 .su-card--minimal .su-card-body { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
 .su-card-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
