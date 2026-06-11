@@ -184,7 +184,7 @@ a, button { cursor: pointer; }
   z-index: 30;
 }
 .su-header.is-scrolled {
-  box-shadow: 0 1px 0 var(--su-hair), 0 16px 40px -20px color-mix(in oklab, var(--su-fg) 22%, transparent);
+  box-shadow: 0 1px 0 var(--su-hair), 0 8px 24px -16px color-mix(in oklab, var(--su-fg) 12%, transparent);
 }
 .su-header-inner {
   display: grid;
