@@ -56,7 +56,7 @@ export default function Header() {
 
           <nav className="su-nav">
             <Link href="/" className="su-nav-link su-nav-only" aria-label="Home" style={{ display: "inline-flex", alignItems: "center" }}>
-              <IconStore width={14} height={14} />
+              <IconStore width={20} height={20} />
             </Link>
             {SHOP_NAV.map((n) => (
               <Link
