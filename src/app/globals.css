@@ -993,6 +993,8 @@ a, button { cursor: pointer; }
 
 /* ── Mobile ────────────────────────────────────────────── */
 @media (max-width: 600px) {
+  .su-card { border: 0; }
+
   /* Typography scale */
   .su-display { font-size: clamp(40px, 11vw, 72px); }
 
