@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
-import { IconBag, IconSearch, IconUser, IconClose, IconMenu } from "@/components/ui/Icons";
+import { IconBag, IconSearch, IconUser, IconClose, IconMenu, IconStore } from "@/components/ui/Icons";
 
 const SHOP_NAV = [
   { href: "/collection/suits",   label: "Suits" },
@@ -55,6 +55,9 @@ export default function Header() {
           </Link>
 
           <nav className="su-nav">
+            <Link href="/" className="su-icon-btn su-nav-only" aria-label="Home" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+              <IconStore />
+            </Link>
             {SHOP_NAV.map((n) => (
               <Link
                 key={n.href}
