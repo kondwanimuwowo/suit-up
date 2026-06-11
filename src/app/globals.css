@@ -245,7 +245,6 @@ a, button { cursor: pointer; }
   display: grid; grid-template-columns: 1fr 1.15fr;
   gap: clamp(28px, 4vw, 72px); align-items: stretch;
   padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 8vw, 120px);
-  border-bottom: 1px solid var(--su-hair);
 }
 .su-hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 28px; max-width: 580px; }
 .su-hero-copy .su-eyebrow { margin-bottom: -12px; }
@@ -262,7 +261,7 @@ a, button { cursor: pointer; }
 .su-hero-image .su-img { height: 100%; }
 
 /* ─── Hero — Centered ──────────────────────────────────────────────────── */
-.su-hero--centered { padding: clamp(56px, 8vw, 120px) 0; text-align: center; border-bottom: 1px solid var(--su-hair); }
+.su-hero--centered { padding: clamp(56px, 8vw, 120px) 0; text-align: center; }
 .su-hero--centered .su-eyebrow { margin-bottom: 24px; }
 .su-hero--centered .su-display { max-width: 18ch; margin: 0 auto; }
 .su-hero-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
@@ -272,7 +271,6 @@ a, button { cursor: pointer; }
   display: grid; grid-template-columns: 1fr 1.4fr;
   gap: clamp(32px, 4vw, 72px);
   padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 7vw, 96px);
-  border-bottom: 1px solid var(--su-hair);
 }
 .su-hero-split-left { display: flex; flex-direction: column; gap: 28px; justify-content: center; max-width: 460px; }
 .su-hero-split-left button { align-self: flex-start; }
@@ -304,8 +302,17 @@ a, button { cursor: pointer; }
 .su-img-meta-dot { color: var(--su-muted); }
 
 /* ─── Sections ─────────────────────────────────────────────────────────── */
-.su-section { padding: clamp(56px, 7vw, 112px) 0; border-bottom: 1px solid var(--su-hair); }
-.su-section:last-of-type { border-bottom: 0; }
+.su-section { padding: clamp(56px, 7vw, 112px) 0; }
+
+/* Alternating section backgrounds — full bleed */
+.su-section--alt,
+.su-home > section:nth-child(even) {
+  background: var(--su-surface);
+  margin-left: calc(-1 * clamp(20px, 4vw, 64px));
+  margin-right: calc(-1 * clamp(20px, 4vw, 64px));
+  padding-left: clamp(20px, 4vw, 64px);
+  padding-right: clamp(20px, 4vw, 64px);
+}
 .su-section-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: clamp(28px, 3.6vw, 56px); }
 .su-section-hd .su-eyebrow { margin-bottom: 12px; display: block; }
 
@@ -356,7 +363,7 @@ a, button { cursor: pointer; }
 .su-editorial {
   display: grid; grid-template-columns: 1.1fr 1fr;
   gap: clamp(32px, 5vw, 88px); padding: clamp(56px, 7vw, 112px) 0;
-  border-bottom: 1px solid var(--su-hair); align-items: center;
+  align-items: center;
 }
 .su-editorial-text { display: flex; flex-direction: column; gap: 22px; max-width: 520px; }
 .su-editorial-cta { display: flex; gap: 20px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
@@ -406,7 +413,12 @@ a, button { cursor: pointer; }
 .su-footer-place { font-style: italic; }
 
 /* ─── PLP ──────────────────────────────────────────────────────────────── */
-.su-plp-head { padding: clamp(40px, 5vw, 72px) 0 clamp(32px, 4vw, 48px); border-bottom: 1px solid var(--su-hair); }
+.su-plp-head {
+  padding: clamp(40px, 5vw, 72px) clamp(20px, 4vw, 64px) clamp(32px, 4vw, 48px);
+  background: var(--su-surface);
+  margin-left: calc(-1 * clamp(20px, 4vw, 64px));
+  margin-right: calc(-1 * clamp(20px, 4vw, 64px));
+}
 .su-breadcrumbs { display: flex; gap: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--su-muted); margin-bottom: 24px; }
 .su-breadcrumbs button { background: transparent; border: 0; padding: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; }
 .su-breadcrumbs button:hover { color: var(--su-accent); }
@@ -453,7 +465,7 @@ a, button { cursor: pointer; }
 .su-empty p { color: var(--su-muted); margin: 0 0 12px; }
 
 /* ─── PDP ──────────────────────────────────────────────────────────────── */
-.su-pdp-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 4vw, 72px); padding-bottom: clamp(48px, 6vw, 96px); border-bottom: 1px solid var(--su-hair); }
+.su-pdp-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 4vw, 72px); padding-bottom: clamp(48px, 6vw, 96px); }
 .su-pdp-gallery { display: flex; flex-direction: column; gap: 14px; }
 .su-pdp-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .su-pdp-thumb {
@@ -495,7 +507,12 @@ a, button { cursor: pointer; }
 .su-spec dd { margin: 0; font-size: 13px; }
 
 /* ─── Cart ─────────────────────────────────────────────────────────────── */
-.su-cart-head { padding: clamp(40px, 5vw, 72px) 0 clamp(28px, 3.6vw, 48px); border-bottom: 1px solid var(--su-hair); }
+.su-cart-head {
+  padding: clamp(40px, 5vw, 72px) clamp(20px, 4vw, 64px) clamp(28px, 3.6vw, 48px);
+  background: var(--su-surface);
+  margin-left: calc(-1 * clamp(20px, 4vw, 64px));
+  margin-right: calc(-1 * clamp(20px, 4vw, 64px));
+}
 .su-cart-body { display: grid; grid-template-columns: 1fr 380px; gap: clamp(32px, 4vw, 72px); padding: clamp(32px, 4vw, 64px) 0 clamp(56px, 7vw, 112px); }
 .su-cart-lines { display: flex; flex-direction: column; }
 .su-cart-line-hd { display: grid; grid-template-columns: 1fr 120px 100px; align-items: center; padding: 0 0 14px; border-bottom: 1px solid var(--su-hair); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--su-muted); }
@@ -587,7 +604,7 @@ a, button { cursor: pointer; }
 .su-seg button.is-active { background: var(--su-fg); color: var(--su-bg); }
 .su-tb-bell { appearance: none; background: transparent; width: 34px; height: 34px; border: 1px solid var(--su-hair); display: inline-flex; align-items: center; justify-content: center; color: var(--su-fg); position: relative; }
 .su-tb-bell-dot { position: absolute; top: 7px; right: 8px; width: 6px; height: 6px; background: var(--su-accent); border-radius: 999px; }
-.su-tb-banner { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; padding: 32px 32px 24px; border-bottom: 1px solid var(--su-hair); }
+.su-tb-banner { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; padding: 32px 32px 24px; background: var(--su-surface); }
 .su-tb-greet { font-family: var(--su-display); font-weight: var(--su-display-w); font-size: clamp(28px, 2.4vw, 42px); line-height: 1.05; margin: 8px 0 0; letter-spacing: -0.01em; text-wrap: balance; }
 .su-tb-greet em { font-style: italic; color: var(--su-accent); font-weight: inherit; }
 [data-typeset="italiana-work"] .su-tb-greet em { font-style: normal; }
