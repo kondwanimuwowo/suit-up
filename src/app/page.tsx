@@ -122,15 +122,19 @@ export default function RootPage() {
           <section className="su-section">
             <div className="su-section-hd">
               <div>
-                <div className="su-eyebrow">Accessories</div>
+                <div className="su-eyebrow">Complete the look</div>
                 <h2 className="su-h2">Finish the look.</h2>
               </div>
-              <Link href="/collection/ties" className="su-link" style={{ textDecoration: "none" }}>
+              <Link href="/collection/all" className="su-link" style={{ textDecoration: "none" }}>
                 View all <IconArrow />
               </Link>
             </div>
             <div className="su-grid su-grid--3">
-              {CATALOG.filter((p) => p.cat === "shirts" || p.cat === "ties").slice(0, 3).map((p) => (
+              {[
+                CATALOG.find((p) => p.id === "su-shirt-white")!,
+                CATALOG.find((p) => p.id === "su-tie-slate")!,
+                CATALOG.find((p) => p.id === "su-shoe-black")!,
+              ].map((p) => (
                 <ProductCard key={p.id} product={p} cardStyle="overlay" />
               ))}
             </div>
