@@ -323,7 +323,7 @@ a, button { cursor: pointer; }
 .su-grid--2 { grid-template-columns: repeat(2, 1fr); }
 
 /* ─── ProductCard ──────────────────────────────────────────────────────── */
-.su-card { cursor: pointer; background: transparent; border: 3px solid var(--su-accent); text-align: left; position: relative; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .35s ease; }
+.su-card { cursor: pointer; background: transparent; border: 3px solid color-mix(in oklab, var(--su-accent) 50%, transparent); text-align: left; position: relative; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .35s ease; }
 .su-card-img-wrap { overflow: hidden; }
 .su-card .su-img { transition: transform .9s cubic-bezier(.2,.6,.2,1); }
 .su-card:hover .su-img { transform: scale(1.035); }
