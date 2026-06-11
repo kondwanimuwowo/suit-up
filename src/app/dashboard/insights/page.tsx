@@ -20,9 +20,10 @@ export default function InsightsPage() {
   const [period, setPeriod] = useState("30d");
   const ACCENT = "var(--su-accent)";
 
-  const topRevenue = INVENTORY.map((i) => {
-    const p = CATALOG.find((c) => c.id === i.id)!;
-    return { ...i, product: p, revenue: i.sold * p.price };
+  const topRevenue = INVENTORY.flatMap((i) => {
+    const p = CATALOG.find((c) => c.id === i.id);
+    if (!p) return [];
+    return [{ ...i, product: p, revenue: i.sold * p.price }];
   }).sort((a, b) => b.revenue - a.revenue).slice(0, 6);
 
   const maxRev = Math.max(...topRevenue.map((t) => t.revenue));

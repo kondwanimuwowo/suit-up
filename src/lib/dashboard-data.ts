@@ -145,7 +145,7 @@ export const INVENTORY: InventoryItem[] = [
   { id: "su-charcoal",        run: 90,  sold: 82,  allocated: 2 },
   { id: "su-navy-stripe",     run: 120, sold: 64,  allocated: 1 },
   { id: "su-shirt-white",     run: 80,  sold: 52,  allocated: 3 },
-  { id: "su-shirt-blue",      run: 60,  sold: 18,  allocated: 1 },
+  { id: "su-shirt-charcoal",  run: 60,  sold: 18,  allocated: 1 },
 ];
 
 export interface Appointment {
