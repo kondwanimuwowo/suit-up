@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CATALOG } from "@/lib/data";
 import ImagePlaceholder from "@/components/storefront/ImagePlaceholder";
 import ProductCard from "@/components/storefront/ProductCard";
@@ -79,7 +80,9 @@ export default function HomePage() {
       {/* ── Editorial callout ────────────────────────────────── */}
       <section className="su-editorial">
         <div className="su-editorial-img">
-          <ImagePlaceholder product={editorial} ratio={4 / 5} />
+          <div className="su-img" style={{ aspectRatio: "5 / 4", position: "relative" }}>
+            <Image src="/images/suits/suit-1b.jpg" alt="Suit Up — style and quality" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+          </div>
         </div>
         <div className="su-editorial-text">
           <div className="su-eyebrow">Style. Service. Quality. Price.</div>
