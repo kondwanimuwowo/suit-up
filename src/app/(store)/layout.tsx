@@ -9,11 +9,9 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
         <div className="su-marquee-track">
           <span>Complimentary nationwide delivery</span><span>·</span>
           <span>Alterations for life, in our Lusaka workshop</span><span>·</span>
-          <span>Autumn — Winter 26 now showing</span><span>·</span>
           <span>Book a fitting in Lusaka, Ndola or Livingstone</span><span>·</span>
           <span>Complimentary nationwide delivery</span><span>·</span>
           <span>Alterations for life, in our Lusaka workshop</span><span>·</span>
-          <span>Autumn — Winter 26 now showing</span><span>·</span>
           <span>Book a fitting in Lusaka, Ndola or Livingstone</span><span>·</span>
         </div>
       </div>
